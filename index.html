@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Almanaque Anual A4 (12 Fotos y Frases)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <aside class="sidebar">
+    <div>
+      <h1>📅 Almanaque Anual A4</h1>
+      <p class="sub">12 fotos, 12 frases y feriados en celular o PC.</p>
+    </div>
+
+    <!-- 1. AÑO, PAÍS Y CALENDARIO -->
+    <div class="box">
+      <div class="box-title">1. Año, País y Calendario</div>
+      <div class="row-2">
+        <div>
+          <label for="yearInput">Año</label>
+          <input type="number" id="yearInput" value="2027" min="2020" max="2050" />
+        </div>
+        <div>
+          <label for="countrySelect">País (Feriados)</label>
+          <select id="countrySelect">
+            <option value="AR" selected>Argentina</option>
+            <option value="ES">España</option>
+            <option value="MX">México</option>
+            <option value="CL">Chile</option>
+            <option value="UY">Uruguay</option>
+            <option value="NONE">Sin feriados</option>
+          </select>
+        </div>
+      </div>
+      <div class="row-2">
+        <div>
+          <label for="titleInput">Título superior</label>
+          <input type="text" id="titleInput" value="Calendario Anual" />
+        </div>
+        <div>
+          <label for="weekStart">Inicio semana</label>
+          <select id="weekStart">
+            <option value="dom" selected>Domingo</option>
+            <option value="lun">Lunes</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- 2. DISEÑO Y CLARIDAD -->
+    <div class="box">
+      <div class="box-title">2. Diseño y Claridad de Foto</div>
+      <div class="row-2">
+        <div>
+          <label for="quoteFontSelect">Tipografía Frases</label>
+          <select id="quoteFontSelect">
+            <option value="Georgia, serif" selected>Elegante (Serif)</option>
+            <option value="cursive">Manuscrita</option>
+            <option value="Arial, sans-serif">Moderna (Sans)</option>
+          </select>
+        </div>
+        <div>
+          <label for="opacityRange">Velo sobre foto: <span id="opVal">35%</span></label>
+          <input type="range" id="opacityRange" min="0" max="85" value="35" />
+        </div>
+      </div>
+      <div class="row-3">
+        <div class="color-col">
+          <input type="color" id="cardBgColor" value="#ffffff" />
+          <span>Color Velo</span>
+        </div>
+        <div class="color-col">
+          <input type="color" id="textColorInput" value="#0f172a" />
+          <span>Números</span>
+        </div>
+        <div class="color-col">
+          <input type="color" id="accentColorInput" value="#b91c1c" />
+          <span>Acento/Feriado</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. FOTOS Y FRASES POR MES -->
+    <div class="box">
+      <div class="box-title">3. Fotos y Frases (Verde = con foto)</div>
+
+      <div>
+        <label for="batchPhotos">Cargar hasta 12 fotos juntas (si tu celu/PC lo permite)</label>
+        <input type="file" id="batchPhotos" accept="image/*" multiple />
+      </div>
+
+      <div class="status-pills" id="statusPills"></div>
+
+      <div class="month-editor">
+        <div class="month-editor-head">
+          <span id="editorMonthTitle">1. Enero</span>
+          <button type="button" class="btn-mini" id="removePhotoBtn">Quitar foto</button>
+        </div>
+
+        <div>
+          <label for="singlePhotoInput">Elegir o cambiar foto de este mes</label>
+          <input type="file" id="singlePhotoInput" accept="image/*" />
+        </div>
+
+        <div class="row-3">
+          <div>
+            <label for="posXRange">Pos X (<span id="posXVal">50</span>%)</label>
+            <input type="range" id="posXRange" min="0" max="100" value="50" />
+          </div>
+          <div>
+            <label for="posYRange">Pos Y (<span id="posYVal">50</span>%)</label>
+            <input type="range" id="posYRange" min="0" max="100" value="50" />
+          </div>
+          <div>
+            <label for="zoomRange">Zoom (<span id="zoomVal">100</span>%)</label>
+            <input type="range" id="zoomRange" min="100" max="220" value="100" />
+          </div>
+        </div>
+
+        <div>
+          <label for="presetQuoteSelect">Frase sugerida</label>
+          <select id="presetQuoteSelect">
+            <option value="">-- Elegir frase inspiradora --</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="customQuoteInput">O frase personalizada</label>
+          <input type="text" id="customQuoteInput" placeholder="Escribí la frase del mes..." />
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. EXPORTACIÓN -->
+    <div>
+      <button type="button" class="btn-img" id="downloadImgBtn">🖼️ Descargar Imagen A4 (PNG)</button>
+      <button type="button" class="btn-print" onclick="window.print()">🖨️ Imprimir / Guardar PDF A4</button>
+      <div class="msg-status" id="msgStatus"></div>
+    </div>
+  </aside>
+
+  <!-- VISTA PREVIA HOJA A4 -->
+  <main class="workspace">
+    <div class="a4-sheet" id="a4Sheet">
+      <div class="sheet-header">
+        <div class="sheet-title" id="previewTitle">Calendario Anual</div>
+        <div class="sheet-year" id="previewYear">2027</div>
+      </div>
+
+      <div class="grid-12" id="grid12"></div>
+
+      <div class="holidays-bar" id="holidaysBar"></div>
+    </div>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>>

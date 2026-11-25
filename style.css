@@ -1,0 +1,453 @@
+:root {
+  --text-color: #0f172a;
+  --accent-color: #b91c1c;
+  --font-quote: Georgia, serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+  background: #e2e8f0;
+  color: #1e293b;
+  display: flex;
+  min-height: 100vh;
+}
+
+/* PANEL LATERAL */
+.sidebar {
+  width: 390px;
+  background: #ffffff;
+  border-right: 1px solid #cbd5e1;
+  padding: 14px;
+  height: 100vh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.sidebar h1 {
+  font-size: 16px;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.sidebar p.sub {
+  font-size: 11.5px;
+  color: #64748b;
+}
+
+.box {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.box-title {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: #475569;
+}
+
+label {
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #334155;
+  display: block;
+  margin-bottom: 2px;
+}
+
+input[type="text"],
+input[type="number"],
+select {
+  width: 100%;
+  padding: 7px 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 13px;
+  background: #fff;
+}
+
+input[type="file"] {
+  width: 100%;
+  font-size: 12px;
+}
+
+.row-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.row-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+.color-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 11px;
+  gap: 2px;
+}
+
+input[type="color"] {
+  width: 100%;
+  height: 26px;
+  border: 1px solid #cbd5e1;
+  border-radius: 5px;
+  cursor: pointer;
+  background: none;
+}
+
+input[type="range"] {
+  width: 100%;
+  height: 22px;
+  cursor: pointer;
+}
+
+/* PASTILLAS DE MESES */
+.status-pills {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+
+.pill {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 6px 4px;
+  border-radius: 6px;
+  background: #e2e8f0;
+  color: #475569;
+  cursor: pointer;
+  border: 1.5px solid transparent;
+}
+
+.pill.has-photo {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.pill.active {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 1px #2563eb;
+}
+
+.month-editor {
+  border: 1px solid #cbd5e1;
+  border-radius: 7px;
+  padding: 8px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.month-editor-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 800;
+  color: #b91c1c;
+}
+
+.btn-mini {
+  padding: 4px 8px;
+  font-size: 11px;
+  border: 1px solid #cbd5e1;
+  background: #f8fafc;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.btn-img {
+  width: 100%;
+  padding: 11px;
+  border: none;
+  border-radius: 7px;
+  font-size: 13.5px;
+  font-weight: 800;
+  cursor: pointer;
+  background: #16a34a;
+  color: #fff;
+}
+
+.btn-img:hover {
+  background: #15803d;
+}
+
+.btn-print {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 7px;
+  font-size: 13px;
+  font-weight: 800;
+  cursor: pointer;
+  background: #2563eb;
+  color: #fff;
+  margin-top: 6px;
+}
+
+.btn-print:hover {
+  background: #1d4ed8;
+}
+
+.msg-status {
+  font-size: 11.5px;
+  font-weight: 700;
+  text-align: center;
+  min-height: 16px;
+  color: #166534;
+  margin-top: 4px;
+}
+
+/* VISTA PREVIA HOJA A4 */
+.workspace {
+  flex: 1;
+  padding: 18px;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100vh;
+}
+
+.a4-sheet {
+  width: 210mm;
+  height: 297mm;
+  min-width: 210mm;
+  min-height: 297mm;
+  background: #ffffff;
+  padding: 9mm;
+  display: flex;
+  flex-direction: column;
+  gap: 3mm;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.18);
+  color: var(--text-color);
+  overflow: hidden;
+  transform-origin: top center;
+}
+
+.sheet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 2mm;
+  flex-shrink: 0;
+}
+
+.sheet-title {
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.sheet-year {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--accent-color);
+  line-height: 1;
+}
+
+.grid-12 {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 3.5mm;
+  min-height: 0;
+}
+
+.month-card {
+  position: relative;
+  border: 1px solid rgba(100, 116, 139, 0.45);
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.month-bg-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.month-overlay {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+  padding: 2mm;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.month-top {
+  text-align: center;
+  border-bottom: 1px solid rgba(100, 116, 139, 0.35);
+  padding-bottom: 1mm;
+}
+
+.month-name {
+  font-size: 10.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--accent-color);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.95);
+}
+
+.month-quote {
+  font-family: var(--font-quote);
+  font-size: 8.5px;
+  font-style: italic;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-top: 1px;
+  color: var(--text-color);
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.95);
+}
+
+.wk-row,
+.days-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  text-align: center;
+}
+
+.wk-row {
+  font-size: 8px;
+  font-weight: 800;
+  margin: 1mm 0 0.6mm 0;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.95);
+}
+
+.days-row {
+  flex: 1;
+  align-items: center;
+  font-size: 9px;
+  font-weight: 800;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.95);
+}
+
+.day-cell {
+  height: 12.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}
+
+.sun {
+  color: var(--accent-color);
+  font-weight: 800;
+}
+
+.holiday {
+  background-color: var(--accent-color);
+  color: #ffffff !important;
+  text-shadow: none;
+  font-weight: 800;
+}
+
+.holidays-bar {
+  font-size: 7.2px;
+  line-height: 1.25;
+  border-top: 1px dashed rgba(100, 116, 139, 0.45);
+  padding-top: 1.5mm;
+  flex-shrink: 0;
+}
+
+/* RESPONSIVE CELULARES */
+@media (max-width: 850px) {
+  body {
+    flex-direction: column;
+    min-height: auto;
+  }
+  .sidebar {
+    width: 100%;
+    height: auto;
+    overflow-y: visible;
+    border-right: none;
+    border-bottom: 1px solid #cbd5e1;
+  }
+  .workspace {
+    width: 100%;
+    height: auto;
+    padding: 12px 8px 24px;
+    overflow: visible;
+  }
+  .a4-sheet {
+    width: 210mm;
+    height: 297mm;
+    transform: scale(0.42);
+    margin-bottom: -170mm;
+  }
+}
+
+@media (max-width: 420px) {
+  .a4-sheet {
+    transform: scale(0.36);
+    margin-bottom: -188mm;
+  }
+}
+
+/* IMPRESIÓN / PDF A4 */
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 0;
+  }
+  html,
+  body {
+    width: 210mm;
+    height: 297mm;
+    background: #fff;
+    overflow: hidden;
+  }
+  .sidebar {
+    display: none !important;
+  }
+  .workspace {
+    padding: 0;
+    margin: 0;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    display: block;
+  }
+  .a4-sheet {
+    box-shadow: none;
+    margin: 0;
+    width: 210mm;
+    height: 297mm;
+    transform: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+}
